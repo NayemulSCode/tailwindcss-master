@@ -1,1 +1,18 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Roboto:wght@400;500;700&display=swap');
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer base {
+  body {
+    @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100;
+    @apply transition-colors duration-300 ease-in-out;
+  }
+  /* You can also apply font-custom-sans here if it's the default for the whole body */
+  /*
+  html {
+    @apply font-custom-sans;
+  }
+  */
+}
