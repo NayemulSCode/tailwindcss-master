@@ -8,11 +8,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <title>Tailwind CSS Tutorial</title>
+    <title>Tailwind CSS Tutorial - React Version</title>
     <link rel="stylesheet" href="/src/index.css"> <!-- Link to your compiled Tailwind CSS -->
     <script>
       // Initial theme setup to avoid FOUC (Flash of Unstyled Content)
-      // Placed in <head> to run before rendering body
+      // Placed in <head> to run before rendering body.
+      // This script directly manipulates the <html> class based on localStorage or system preference.
+      // The React app will then read this initial state.
       if (localStorage.getItem('color-theme') === 'dark' ||
           (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.documentElement.classList.add('dark');
@@ -21,98 +23,17 @@
       }
     </script>
   </head>
-  <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-custom-sans">
-
-    <nav class="bg-gray-200 dark:bg-gray-800 p-4 shadow-md sticky top-0 z-50">
-      <div class="container mx-auto flex justify-between items-center">
-        <div class="text-xl font-bold text-gray-800 dark:text-white font-custom-serif">
-          MySite (আমার সাইট)
-        </div>
-        <button id="theme-toggle" type="button" title="Toggle theme" class="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 dark:focus:ring-gray-400">
-          <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-          <svg id="theme-toggle-light-icon" class="hidden h-6 w-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-        </button>
-      </div>
-    </nav>
-
-    <!-- Main content area -->
-    <div class="container mx-auto p-8">
-      <h1 class="text-4xl font-bold text-custom-primary dark:text-custom-secondary mb-6 font-custom-serif">
-        Welcome to Tailwind CSS Tutorial! (Tailwind CSS টিউটোরিয়ালে স্বাগতম!)
-      </h1>
-
-      <p class="mb-4 text-lg leading-relaxed">
-        This page demonstrates the concepts covered in the <code class="bg-gray-200 dark:bg-gray-700 p-1 rounded text-sm">tailwind_tutorial.md</code> file.
-        এই পৃষ্ঠাটি <code class="bg-gray-200 dark:bg-gray-700 p-1 rounded text-sm">tailwind_tutorial.md</code> ফাইলে কভার করা ধারণাগুলি প্রদর্শন করে।
-      </p>
-      <p class="mb-4">
-        Try toggling the dark mode switch in the navbar to see the theme change!
-        থিম পরিবর্তন দেখতে নেভিগেশন বারে ডার্ক মোড সুইচ টগল করার চেষ্টা করুন!
-      </p>
-
-      <div class="grid md:grid-cols-2 gap-8 my-8">
-        <div class="bg-custom-primary text-white p-6 rounded-lg shadow-lg">
-          <h2 class="text-2xl font-bold mb-2 font-custom-serif">Light Mode Card</h2>
-          <p class="font-custom-sans">This card uses the 'custom-primary' background. In dark mode, it will remain the same unless overridden with dark: variants.</p>
-          <p class="font-custom-sans mt-2">এই কার্ডটি 'custom-primary' ಹಿನ್ನೆಲೆ ব্যবহার করে। ডার্ক মোডে, এটি একই থাকবে যদি না dark: ভেরিয়েন্ট দিয়ে ওভাররাইড করা হয়।</p>
-        </div>
-        <div class="bg-gray-200 dark:bg-gray-700 p-6 rounded-lg shadow-lg">
-          <h2 class="text-2xl font-bold mb-2 text-gray-800 dark:text-white font-custom-serif">Adaptive Card</h2>
-          <p class="font-custom-sans">This card changes its background and text color in dark mode.</p>
-          <p class="font-custom-sans mt-2">এই কার্ডটি ডার্ক মোডে তার ಹಿನ್ನೆಲೆ এবং টেক্সট রঙ পরিবর্তন করে।</p>
-        </div>
-      </div>
-
-      <div class="p-custom-lg bg-gray-100 dark:bg-gray-800 rounded-lg shadow-xl mt-8">
-        <h2 class="font-custom-sans text-3xl text-custom-primary dark:text-custom-secondary mb-4">
-          Custom Themed Section (কাস্টম থিমযুক্ত বিভাগ)
-        </h2>
-        <p class="font-custom-serif text-lg text-brand-blue-dark dark:text-brand-blue-light mb-6">
-          This paragraph uses our custom serif font and a shade of our custom brand blue color, adapting for dark mode.
-          (এই প্যারাগ্রাফটি আমাদের কাস্টম সেরিফ ফন্ট এবং আমাদের কাস্টম ব্র্যান্ড ব্লু রঙের একটি শেড ব্যবহার করে, যা ডার্ক মোডের জন্য অভিযোজিত।)
-        </p>
-        <button class="bg-custom-secondary hover:bg-yellow-400 text-gray-900 font-custom-sans font-semibold py-3 px-6 rounded-lg shadow-md">
-          Custom Secondary Button
-        </button>
-        <div class="mt-128 bg-brand-blue dark:bg-opacity-50 p-4 text-white rounded">
-          This box has a margin-top of 32rem (mt-128) and uses the default brand-blue (with opacity in dark mode).
-          (এই বক্সটির উপরে 32rem মার্জিন (mt-128) রয়েছে এবং এটি ডিফল্ট ব্র্যান্ড-ব্লু রঙ ব্যবহার করে (ডার্ক মোডে অপাসিটি সহ)।)
-        </div>
-      </div>
-
-    </div>
-
-    <!-- The React app will be mounted here if main.jsx is used -->
+  <body class="font-custom-sans">
+    <!--
+      Base body background and text colors (light/dark) are now applied via src/index.css
+      and managed by the React app through the class on the <html> tag.
+      The font-custom-sans is applied here as a sensible default.
+    -->
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
-
-    <script>
-      const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-      const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
-      const themeToggleButton = document.getElementById('theme-toggle');
-
-      function setThemeUI(isDark) {
-        if (isDark) {
-          themeToggleLightIcon.classList.remove('hidden');
-          themeToggleDarkIcon.classList.add('hidden');
-        } else {
-          themeToggleDarkIcon.classList.remove('hidden');
-          themeToggleLightIcon.classList.add('hidden');
-        }
-      }
-
-      // Set the initial UI state for the button based on the class on <html>
-      setThemeUI(document.documentElement.classList.contains('dark'));
-
-      themeToggleButton.addEventListener('click', function() {
-        const isCurrentlyDark = document.documentElement.classList.toggle('dark');
-        if (isCurrentlyDark) {
-          localStorage.setItem('color-theme', 'dark');
-        } else {
-          localStorage.setItem('color-theme', 'light');
-        }
-        setThemeUI(isCurrentlyDark);
-      });
-    </script>
+    <!--
+      The static navbar, content, and theme toggling script have been removed.
+      All UI and logic are now handled by the React application mounted in div#root.
+    -->
   </body>
 </html>
