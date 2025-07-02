@@ -1,7 +1,6 @@
 import React from 'react';
 import ThemeSwitcher from './ThemeSwitcher';
 
-// eslint-disable-next-line react/prop-types
 function Navbar({ isDarkMode, toggleTheme }) {
   return (
     <nav className="bg-gray-200 dark:bg-gray-800 p-4 shadow-md sticky top-0 z-50">

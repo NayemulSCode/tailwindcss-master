@@ -1,6 +1,5 @@
 import React from 'react';
 
-// eslint-disable-next-line react/prop-types
 function ThemeSwitcher({ isDarkMode, toggleTheme }) {
   return (
     <button
